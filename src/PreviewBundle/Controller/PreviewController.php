@@ -72,6 +72,7 @@ class PreviewController extends AbstractController
 
         $content = $this->previewContentManager->find(self::NEW_NODE_PATH) ?? new ContentDocument();
         $content->setPath(self::NEW_NODE_PATH);
+        $content->setTitle('');
         if (UUIDHelper::isUUID($contentId)) {
             $existingDocument = $this->contentManager->find($contentId);
             if ($existingDocument instanceof AbstractPersistenceDocument) {
