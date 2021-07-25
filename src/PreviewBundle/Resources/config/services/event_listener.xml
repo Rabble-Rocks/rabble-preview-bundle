@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="rabble_preview.event_listener.content_ui_grid_subscriber" class="Rabble\PreviewBundle\EventListener\ContentUiGridSubscriber">
+            <argument type="service" id="twig"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="rabble_preview.event_listener.vich_upload_subscriber" class="Rabble\PreviewBundle\EventListener\VichUploadSubscriber">
+            <argument type="service" id="rabble_content.document_fields_provider"/>
+            <argument type="service" id="rabble_content.persistence.content_manager"/>
+            <argument type="service" id="rabble_content.content_block_manager"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+        <service id="rabble_preview.event_listener.remove_preview_subscriber" class="Rabble\PreviewBundle\EventListener\RemovePreviewSubscriber">
+            <argument type="service" id="rabble_preview.persistence.content_manager"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+    </services>
+</container>

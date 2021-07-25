@@ -1,0 +1,7 @@
+{%- set contentLocaleKey = constant('Rabble\\AdminBundle\\EventListener\\RouterContextSubscriber::CONTENT_LOCALE_KEY') -%}
+<div id="rabble_content_preview"
+     data-save="{{ path('rabble_admin_preview_save') }}"
+     data-content-type="{{ app.request.attributes.get('contentType').name }}"
+     data-content-id="{{ app.request.attributes.get('content') }}"
+     data-locale="{{ contentLocaleKey }}"
+></div>

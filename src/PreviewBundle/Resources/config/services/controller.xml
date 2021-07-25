@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="rabble_preview.controller.preview" class="Rabble\PreviewBundle\Controller\PreviewController">
+            <argument type="service" id="rabble_content.persistence.content_manager"/>
+            <argument type="service" id="rabble_preview.persistence.content_manager"/>
+            <argument type="service" id="rabble_content.content_type_manager"/>
+            <argument type="service" id="rabble_content.content.structure_builder"/>
+            <tag name="controller.service_arguments"/>
+            <tag name="container.service_subscriber"/>
+            <call method="setContainer">
+                <argument type="service" id="Psr\Container\ContainerInterface" />
+            </call>
+        </service>
+    </services>
+</container>
